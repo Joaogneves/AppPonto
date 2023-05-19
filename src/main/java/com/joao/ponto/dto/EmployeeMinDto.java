@@ -1,6 +1,9 @@
 package com.joao.ponto.dto;
 
+import com.joao.ponto.entity.Employee;
 import com.joao.ponto.entity.Workload;
+import com.joao.ponto.projection.EmployeeMinDtoProjection;
+import org.springframework.beans.BeanUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +21,17 @@ public class EmployeeMinDto {
         this.office = office;
         this.workplace = workplace;
         this.id = id;
+    }
+
+  /*  public EmployeeMinDto(EmployeeMinDtoProjection projection){
+        name = projection.getName();
+        office = projection.getOffice();
+        workplace = projection.getWorkplace();
+        id = projection.getId();
+    }*/
+
+    public EmployeeMinDto(Employee employee) {
+        BeanUtils.copyProperties(employee, this);
     }
 
     public String getName() {
