@@ -1,5 +1,6 @@
 package com.joao.ponto.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ public class Employee {
     @Column(nullable = false, unique = true) private String name;
     @Column(nullable = false) private String office;
     @Column(nullable = false) private String workplace;
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "employee")
     @Column(nullable = false) private List<Workload> workloads = new ArrayList<>();
     @Id

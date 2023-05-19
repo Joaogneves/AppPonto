@@ -1,6 +1,8 @@
 package com.joao.ponto.dto;
 
 import com.joao.ponto.entity.Employee;
+import com.joao.ponto.entity.Workload;
+import org.springframework.beans.BeanUtils;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -16,16 +18,8 @@ public class WorkloadDto {
 
     private Long id;
 
-    public WorkloadDto(){}
-
-    public WorkloadDto(LocalTime entrance, LocalTime lunch, LocalTime lunchReturn, LocalTime departure, LocalDate serviceDay, Employee employee, Long id) {
-        this.entrance = entrance;
-        this.lunch = lunch;
-        this.lunchReturn = lunchReturn;
-        this.departure = departure;
-        this.serviceDay = serviceDay;
-        this.employee = employee;
-        this.id = id;
+    public WorkloadDto(Workload entity) {
+        BeanUtils.copyProperties(entity, this);
     }
 
     public LocalTime getEntrance() {

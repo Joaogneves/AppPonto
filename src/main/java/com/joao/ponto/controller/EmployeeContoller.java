@@ -22,7 +22,7 @@ public class EmployeeContoller {
     @PostMapping
     public ResponseEntity<String> saveEmployee(@RequestBody Employee employee) {
         service.save(employee);
-        return ResponseEntity.status(HttpStatus.OK).body("Employee " + employee.getName() + " Saved");
+        return ResponseEntity.status(HttpStatus.CREATED).body("Employee " + employee.getName() + " Saved");
     }
 
     @GetMapping

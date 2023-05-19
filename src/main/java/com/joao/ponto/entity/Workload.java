@@ -1,6 +1,8 @@
 package com.joao.ponto.entity;
 
+import com.joao.ponto.dto.WorkloadDto;
 import jakarta.persistence.*;
+import org.springframework.beans.BeanUtils;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -14,7 +16,9 @@ public class Workload {
     @Column(nullable = false) private LocalTime lunchReturn;
     @Column(nullable = false) private LocalTime departure;
     @Column(nullable = false, unique = true) private LocalDate serviceDay;
+
     @ManyToOne
+    @JoinColumn(name = "employee_id")
     private Employee employee;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,6 +33,10 @@ public class Workload {
         this.serviceDay = day;
         this.employee = employee;
         this.id = id;
+    }
+
+    public Workload(WorkloadDto workloadDto) {
+        BeanUtils.copyProperties(workloadDto, this);
     }
 
     public LocalTime getEntrance() {
