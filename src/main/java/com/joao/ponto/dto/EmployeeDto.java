@@ -11,7 +11,6 @@ public class EmployeeDto {
     private String name;
     private String office;
     private String workplace;
-    private List<Workload> workloads = new ArrayList<>();
     private Long id;
 
     public EmployeeDto(){}
@@ -41,14 +40,6 @@ public class EmployeeDto {
 
     public void setWorkplace(String workplace) {
         this.workplace = workplace;
-    }
-
-    public List<Workload> getWorkloads() {
-        return workloads;
-    }
-
-    public void setWorkloads(List<Workload> workloads) {
-        this.workloads = workloads;
     }
 
     public Long getId() {

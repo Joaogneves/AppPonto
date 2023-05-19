@@ -34,6 +34,7 @@ public class EmployeeMinDto {
         BeanUtils.copyProperties(employee, this);
     }
 
+
     public String getName() {
         return name;
     }

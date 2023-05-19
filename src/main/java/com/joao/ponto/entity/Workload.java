@@ -3,17 +3,17 @@ package com.joao.ponto.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Objects;
 
 @Entity
 @Table(name = "workload")
 public class Workload {
-    @Column(nullable = false) private LocalDateTime entrance;
-    @Column(nullable = false) private LocalDateTime lunch;
-    @Column(nullable = false) private LocalDateTime lunchReturn;
-    @Column(nullable = false) private LocalDateTime departure;
-    @Column(nullable = false) private LocalDate serviceDay;
+    @Column(nullable = false) private LocalTime entrance;
+    @Column(nullable = false) private LocalTime lunch;
+    @Column(nullable = false) private LocalTime lunchReturn;
+    @Column(nullable = false) private LocalTime departure;
+    @Column(nullable = false, unique = true) private LocalDate serviceDay;
     @ManyToOne
     private Employee employee;
     @Id
@@ -21,7 +21,7 @@ public class Workload {
     private Long id;
 
     public Workload(){}
-    public Workload(LocalDateTime entrance, LocalDateTime lunch, LocalDateTime lunchReturn, LocalDateTime departure, LocalDate day, Employee employee, Long id) {
+    public Workload(LocalTime entrance, LocalTime lunch, LocalTime lunchReturn, LocalTime departure, LocalDate day, Employee employee, Long id) {
         this.entrance = entrance;
         this.lunch = lunch;
         this.lunchReturn = lunchReturn;
@@ -31,35 +31,35 @@ public class Workload {
         this.id = id;
     }
 
-    public LocalDateTime getEntrance() {
+    public LocalTime getEntrance() {
         return entrance;
     }
 
-    public void setEntrance(LocalDateTime entrance) {
+    public void setEntrance(LocalTime entrance) {
         this.entrance = entrance;
     }
 
-    public LocalDateTime getLunch() {
+    public LocalTime getLunch() {
         return lunch;
     }
 
-    public void setLunch(LocalDateTime lunch) {
+    public void setLunch(LocalTime lunch) {
         this.lunch = lunch;
     }
 
-    public LocalDateTime getLunchReturn() {
+    public LocalTime getLunchReturn() {
         return lunchReturn;
     }
 
-    public void setLunchReturn(LocalDateTime lunchReturn) {
+    public void setLunchReturn(LocalTime lunchReturn) {
         this.lunchReturn = lunchReturn;
     }
 
-    public LocalDateTime getDeparture() {
+    public LocalTime getDeparture() {
         return departure;
     }
 
-    public void setDeparture(LocalDateTime departure) {
+    public void setDeparture(LocalTime departure) {
         this.departure = departure;
     }
 

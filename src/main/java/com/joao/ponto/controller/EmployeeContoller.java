@@ -31,8 +31,9 @@ public class EmployeeContoller {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Employee> findById(@PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(service.findById(id));
+    public ResponseEntity<EmployeeDto> findById(@PathVariable Long id) {
+        Employee employee = service.findById(id);
+        return ResponseEntity.ok().body(new EmployeeDto(employee));
     }
 
     @DeleteMapping(value = "/{id}")

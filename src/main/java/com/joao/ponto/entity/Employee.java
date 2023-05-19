@@ -26,6 +26,10 @@ public class Employee {
         this.id = id;
     }
 
+    public Employee(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -77,5 +81,9 @@ public class Employee {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public static Employee createFromId(Long id) {
+        return new Employee(id);
     }
 }

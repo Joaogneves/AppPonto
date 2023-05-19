@@ -3,14 +3,14 @@ package com.joao.ponto.dto;
 import com.joao.ponto.entity.Employee;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class WorkloadDto {
-    private LocalDateTime entrance;
-    private LocalDateTime lunch;
-    private LocalDateTime lunchReturn;
+    private LocalTime entrance;
+    private LocalTime lunch;
+    private LocalTime lunchReturn;
 
-    private LocalDateTime departure;
+    private LocalTime departure;
     private LocalDate serviceDay;
     private Employee employee;
 
@@ -18,7 +18,7 @@ public class WorkloadDto {
 
     public WorkloadDto(){}
 
-    public WorkloadDto(LocalDateTime entrance, LocalDateTime lunch, LocalDateTime lunchReturn, LocalDateTime departure, LocalDate serviceDay, Employee employee, Long id) {
+    public WorkloadDto(LocalTime entrance, LocalTime lunch, LocalTime lunchReturn, LocalTime departure, LocalDate serviceDay, Employee employee, Long id) {
         this.entrance = entrance;
         this.lunch = lunch;
         this.lunchReturn = lunchReturn;
@@ -28,35 +28,35 @@ public class WorkloadDto {
         this.id = id;
     }
 
-    public LocalDateTime getEntrance() {
+    public LocalTime getEntrance() {
         return entrance;
     }
 
-    public void setEntrance(LocalDateTime entrance) {
+    public void setEntrance(LocalTime entrance) {
         this.entrance = entrance;
     }
 
-    public LocalDateTime getLunch() {
+    public LocalTime getLunch() {
         return lunch;
     }
 
-    public void setLunch(LocalDateTime lunch) {
+    public void setLunch(LocalTime lunch) {
         this.lunch = lunch;
     }
 
-    public LocalDateTime getLunchReturn() {
+    public LocalTime getLunchReturn() {
         return lunchReturn;
     }
 
-    public void setLunchReturn(LocalDateTime lunchReturn) {
+    public void setLunchReturn(LocalTime lunchReturn) {
         this.lunchReturn = lunchReturn;
     }
 
-    public LocalDateTime getDeparture() {
+    public LocalTime getDeparture() {
         return departure;
     }
 
-    public void setDeparture(LocalDateTime departure) {
+    public void setDeparture(LocalTime departure) {
         this.departure = departure;
     }
 
