@@ -1,6 +1,7 @@
 package com.joao.ponto.service.impl;
 
 import com.joao.ponto.dto.EmployeeMinDto;
+import com.joao.ponto.dto.EmployeeToUpdateDto;
 import com.joao.ponto.entity.Employee;
 import com.joao.ponto.repository.EmployeeRepository;
 import com.joao.ponto.service.IEmployeeService;
@@ -33,5 +34,12 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public void delete(Long id) {
         repository.deleteById(id);
+    }
+
+    public Employee update(Long id, EmployeeToUpdateDto employeeToUpdateDto) {
+        Employee employee = repository.findById(id).orElseThrow();
+        employee.setOffice(employeeToUpdateDto.getOffice());
+        employee.setWorkplace(employeeToUpdateDto.getWorkplace());
+        return repository.save(employee);
     }
 }

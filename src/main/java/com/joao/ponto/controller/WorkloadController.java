@@ -1,6 +1,7 @@
 package com.joao.ponto.controller;
 
 import com.joao.ponto.dto.WorkloadDto;
+import com.joao.ponto.dto.WorkloadToUpdateDto;
 import com.joao.ponto.entity.Workload;
 import com.joao.ponto.service.impl.WorkLoadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,11 @@ public class WorkloadController {
     public ResponseEntity<String> deleteTime(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.status(HttpStatus.OK).body("Deleted");
+    }
+
+    @PatchMapping
+    public ResponseEntity<Workload> update(@RequestParam(value = "horarioId") Long id, @RequestBody WorkloadToUpdateDto workloadToUpdateDto) {
+        Workload workload = service.update(id, workloadToUpdateDto);
+        return ResponseEntity.status(HttpStatus.OK).body(workload);
     }
 }

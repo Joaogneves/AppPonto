@@ -1,7 +1,6 @@
 package com.joao.ponto.dto;
 
 import com.joao.ponto.entity.Employee;
-import com.joao.ponto.entity.Workload;
 import org.springframework.beans.BeanUtils;
 
 import java.util.ArrayList;
@@ -11,6 +10,8 @@ public class EmployeeDto {
     private String name;
     private String office;
     private String workplace;
+
+    private List<WorkloadToUpdateDto> workload = new ArrayList<>();
     private Long id;
 
     public EmployeeDto(){}
@@ -40,6 +41,13 @@ public class EmployeeDto {
 
     public void setWorkplace(String workplace) {
         this.workplace = workplace;
+    }
+
+    public List<WorkloadToUpdateDto> getWorkload() {
+        return workload;
+    }
+    public void setWorkload(List<WorkloadToUpdateDto> workload) {
+        this.workload = workload;
     }
 
     public Long getId() {
