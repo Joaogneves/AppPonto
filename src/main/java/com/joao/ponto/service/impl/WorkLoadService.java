@@ -31,15 +31,15 @@ public class WorkLoadService implements IWorkloadService {
         return repository.save(workload);
     }
 
-    /*@Override
+    @Override
     public List<Workload> findAll() {
         return repository.findAll();
-    }*/
+    }
 
-    /*@Override
+    @Override
     public Workload findById(Long id) {
         return repository.findById(id).orElseThrow();
-    }*/
+    }
     @Override
     public void delete(Long id) {
         repository.deleteById(id);
