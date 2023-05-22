@@ -15,7 +15,7 @@ public class Workload {
     @Column(nullable = false) private LocalTime lunch;
     @Column(nullable = false) private LocalTime lunchReturn;
     @Column(nullable = false) private LocalTime departure;
-    @Column(nullable = false, unique = true) private LocalDate serviceDay;
+    @Column(nullable = false) private LocalDate serviceDay;
 
     @ManyToOne
     @JoinColumn(name = "employee_id")

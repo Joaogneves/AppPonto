@@ -1,7 +1,9 @@
 package com.joao.ponto.service.impl;
 
 import com.joao.ponto.dto.WorkloadToUpdateDto;
+import com.joao.ponto.entity.Employee;
 import com.joao.ponto.entity.Workload;
+import com.joao.ponto.repository.EmployeeRepository;
 import com.joao.ponto.repository.WorkloadRepository;
 import com.joao.ponto.service.IWorkloadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,21 +19,27 @@ public class WorkLoadService implements IWorkloadService {
     @Autowired
     private WorkloadRepository repository;
 
+    @Autowired
+    private EmployeeService service;
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
 
     @Override
     public Workload save(Workload workload) {
+        workload.setEmployee(service.findById(workload.getEmployee().getId()));
         return repository.save(workload);
     }
 
-    @Override
+    /*@Override
     public List<Workload> findAll() {
         return repository.findAll();
-    }
+    }*/
 
-    @Override
+    /*@Override
     public Workload findById(Long id) {
         return repository.findById(id).orElseThrow();
-    }
+    }*/
     @Override
     public void delete(Long id) {
         repository.deleteById(id);
@@ -45,5 +53,9 @@ public class WorkLoadService implements IWorkloadService {
         workload.setLunchReturn(workloadToUpdateDto.getLunchReturn());
         workload.setServiceDay(workloadToUpdateDto.getServiceDay());
         return repository.save(workload);
+    }
+    public List<Workload> findAllByEmployee(Long employeeId) {
+        Employee employee = service.findById(employeeId);
+        return repository.findAllByEmployee(employeeId);
     }
 }

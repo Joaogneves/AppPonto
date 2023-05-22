@@ -24,15 +24,15 @@ public class WorkloadController {
         return ResponseEntity.status(HttpStatus.CREATED).body("Hour saved");
     }
 
-    @GetMapping
+   /* @GetMapping
     public List<Workload> findAll() {
         return service.findAll();
-    }
+    }*/
 
-    @GetMapping(value = "/{id}")
+    /*@GetMapping(value = "/{id}")
     public ResponseEntity<WorkloadDto> findById(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(new WorkloadDto(service.findById(id)));
-    }
+    }*/
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<String> deleteTime(@PathVariable Long id) {
@@ -44,5 +44,11 @@ public class WorkloadController {
     public ResponseEntity<Workload> update(@RequestParam(value = "horarioId") Long id, @RequestBody WorkloadToUpdateDto workloadToUpdateDto) {
         Workload workload = service.update(id, workloadToUpdateDto);
         return ResponseEntity.status(HttpStatus.OK).body(workload);
+    }
+
+    @GetMapping(value = "funcionarios/{employeeId}")
+    public ResponseEntity<List<Workload>> findAllByEmployee(@PathVariable Long employeeId) {
+        List<Workload> workloads = service.findAllByEmployee(employeeId);
+        return ResponseEntity.ok(workloads);
     }
 }
