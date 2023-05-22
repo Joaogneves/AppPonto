@@ -24,15 +24,14 @@ public class WorkloadController {
         return ResponseEntity.status(HttpStatus.CREATED).body("Hour saved");
     }
 
-   /* @GetMapping
+    @GetMapping
     public List<Workload> findAll() {
         return service.findAll();
-    }*/
-
-    /*@GetMapping(value = "/{id}")
+    }
+    @GetMapping(value = "/{id}")
     public ResponseEntity<WorkloadDto> findById(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(new WorkloadDto(service.findById(id)));
-    }*/
+    }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<String> deleteTime(@PathVariable Long id) {
